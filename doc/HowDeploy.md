@@ -26,9 +26,14 @@
   |       2|Kernel Mode|Do Not Use|192.168.1.11|192.168.1.12|
   |       3|Witness    |Do Not Use|Use         |Use         |
 
-- Witness Heartbeat Properties
+- Witness Heartbeat Properties (Linux, Docker)
   - Target Host: 192.168.1.1
   - Service Port: 80
+
+- Witness Heartbeat Properties (Kubernetes)
+  - Target Host: 192.168.1.1
+  - Service Port: 30080
+
 
 ## How to Deploy clpwitnessd on Linux
 1. Install Node.js on a Linux machine.
