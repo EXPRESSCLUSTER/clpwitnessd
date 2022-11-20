@@ -1,6 +1,13 @@
 # How to Deploy clpwitnessd
 - clpwitnesd is a module of CLUSTERPRO/EXPRESSCLUSTER to prevent split-brain.
 
+## Index
+- [Sample Configuration](#sample-configuration)
+- [How to Deploy clpwitnessd](#how-to-deploy-clpwitnessd)
+  - [Linux](#linux)
+  - [Docker](#docker)
+  - [Kubernetes](#kubernetes)
+
 ## Sample Configuration
 ```
             +-----------------+
@@ -28,14 +35,15 @@
 
 - Witness Heartbeat Properties (Linux, Docker)
   - Target Host: 192.168.1.1
-  - Service Port: 80
+  - Service Port: 8080
 
 - Witness Heartbeat Properties (Kubernetes)
   - Target Host: 192.168.1.1
   - Service Port: 30080
 
 
-## How to Deploy clpwitnessd on Linux
+## How to Deploy clpwitnessd
+### Linux
 1. Install Node.js on a Linux machine.
 1. Copy the clpwitnessd module from CLUSTERPRO/EXPRESSCLUSTER Media to the Linux machine. If your DVD drive name is D:, you can find the module on the following directory.
    - D:\Common\5.0\common\tools\witnessd\clpwitnessd-5.0.0.tgz
@@ -59,7 +67,7 @@
 <!--
 ### Enable HTTPS for clpwitnessd
 -->
-## How to Deploy clpwitnessd on Docker
+### Docker
 1. Install Docker on a Linux machine.
 1. Pull the clpwitnessd container image from Docker Hub.
    ```sh
@@ -69,10 +77,10 @@
      - https://hub.docker.com/r/expresscluster/clpwitnessd
 1. Run the containr.
    ```sh
-   docker run -it -d --name clpwitnessd -p 80:80 docker.io/expresscluster/clpwitnessd:latest clpwitnessd:latest
+   docker run -it -d --name clpwitnessd -p 8089:8080 docker.io/expresscluster/clpwitnessd:latest clpwitnessd:latest
    ```     
 
-## How to Deploy clpwitnessd on Kubernetes
+### Kubernetes
 1. Create a Kubernetes cluster on Linux machines.
 1. Create a yaml file (e.g. clpwitnessd.yml)as below.
    ```yaml
@@ -87,7 +95,7 @@
      - name: clpwitnessd
        image: docker.io/expresscluster/clpwitnessd:latest
        ports:
-       - containerPort: 80
+       - containerPort: 8080
    ---
    apiVersion: v1
    kind: Service
@@ -99,7 +107,7 @@
        - name: clpwitnessd
          protocol: TCP
          port: 8080
-         targetPort: 80
+         targetPort: 8080
          nodePort: 30080
      selector:
        app: clpwitnessd   
