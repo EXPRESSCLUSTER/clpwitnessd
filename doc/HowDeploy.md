@@ -7,6 +7,7 @@
   - [Linux](#linux)
   - [Docker](#docker)
   - [Kubernetes](#kubernetes)
+  - [Azure App Service](#azure-app-serivce)
 
 ## Sample Configuration
 ```
@@ -116,3 +117,6 @@
    ```sh
    kubectl apply -f clpwitnessd.yml
    ```
+
+### Azure App Serivce
+- Refer to [App Service](https://github.com/EXPRESSCLUSTER/App-Service) repository.
